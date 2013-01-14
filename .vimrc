@@ -1,7 +1,11 @@
 filetype off
+
+" Pathogen stuff. inorite?
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+call pathogen#infect() 
 
+" Basic settings
 filetype on 
 syntax on
 set nowrap
@@ -33,4 +37,23 @@ nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 let g:pep8_map='<leader>8'
 
-call pathogen#infect() 
+" Memory
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+au BufWinLeave * silent! mkview
+au BufWinEnter * silent! loadview
+
+" Reset cursor to last known position
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+
+
