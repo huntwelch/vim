@@ -16,3 +16,6 @@
 [submodule "bundle/tasklist"]
 	path = bundle/tasklist
 	url = https://github.com/vim-scripts/TaskList.vim.git
+[submodule "bundle/zen-coding"]
+	path = bundle/zen-coding
+	url = https://github.com/mattn/zencoding-vim.git

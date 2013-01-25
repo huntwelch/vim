@@ -3,11 +3,10 @@ filetype off
 " Pathogen stuff. inorite?
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-call pathogen#infect() 
 
 " Basic settings
 filetype on 
-syntax on
+syntax on 
 set nowrap
 set ruler
 set autoindent
@@ -22,16 +21,18 @@ colorscheme wombat
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 
-au! BufRead,BufNewFile *.coffee setfiletype coffee 
+au! BufRead,BufNewFile *.jade setfiletype jade 
 au! BufRead,BufNewFile *.styl setfiletype styl 
+au! BufRead,BufNewFile *.coffee setfiletype coffee 
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
-autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
-autocmd Filetype styl setlocal ts=2 sts=2 sw=2
+autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 syntax=coffee
+autocmd Filetype styl setlocal ts=2 sts=2 sw=2 syntax=stylus
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2 syntax=jade
 
 " Key mappings
-:let mapleader = ","
+" :let mapleader = ","
 map <unique> <Leader>l <Plug>TaskList
 nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
@@ -56,4 +57,18 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+" Word mode
+func! WordProcessorMode() 
+  setlocal formatoptions=1 
+  setlocal noexpandtab 
+  map j gj 
+  map k gk
+  setlocal spell spelllang=en_us 
+  set complete+=s
+  set formatprg=par
+  setlocal wrap 
+  setlocal linebreak 
+endfu 
+com! WP call WordProcessorMode()
 
+call pathogen#infect() 
