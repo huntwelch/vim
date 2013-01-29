@@ -71,4 +71,18 @@ func! WordProcessorMode()
 endfu 
 com! WP call WordProcessorMode()
 
+func! ExitWordMode() 
+  setlocal formatoptions="tcq" 
+  setlocal expandtab 
+  map j j 
+  map k k
+  setlocal nospell
+  set complete-=s
+  set formatprg=""
+  setlocal nowrap 
+  setlocal nolinebreak 
+endfu 
+com! WQ call ExitWordMode()
+
+
 call pathogen#infect() 
