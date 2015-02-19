@@ -15,7 +15,10 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 set number
-colorscheme wombat
+set background=dark
+colorscheme distinguished
+
+" :hi Comment ctermfg=black
 
 " File type and styles
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -24,12 +27,15 @@ let g:SuperTabDefaultCompletionType = "context"
 au! BufRead,BufNewFile *.jade setfiletype jade 
 au! BufRead,BufNewFile *.styl setfiletype styl 
 au! BufRead,BufNewFile *.coffee setfiletype coffee 
+au! BufRead,BufNewFile *.yaml setfiletype yaml
 
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 syntax=coffee
 autocmd Filetype styl setlocal ts=2 sts=2 sw=2 syntax=stylus
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2 syntax=jade
+autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Key mappings
 " :let mapleader = ","
