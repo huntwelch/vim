@@ -26,6 +26,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 au! BufRead,BufNewFile *.jade setfiletype jade 
 au! BufRead,BufNewFile *.styl setfiletype styl 
+au! BufRead,BufNewFile *.less setfiletype less
 au! BufRead,BufNewFile *.coffee setfiletype coffee 
 au! BufRead,BufNewFile *.yaml setfiletype yaml
 au! BufRead,BufNewFile *.soy setfiletype html
@@ -34,6 +35,7 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 syntax=coffee
+autocmd Filetype less setlocal ts=2 sts=2 sw=2 syntax=less
 autocmd Filetype styl setlocal ts=2 sts=2 sw=2 syntax=stylus
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2 syntax=jade
 autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -61,10 +63,10 @@ nmap \e :NERDTreeToggle<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_javascript_checkers = ['standard']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_javascript_checkers = ['standard']
 
 
 " Memory
