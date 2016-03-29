@@ -17,6 +17,9 @@ set number
 
 let g:solarized_termcolors = 256
 colorscheme distinguished
+set background=dark
+
+:hi Comment ctermfg=black
 
 " File type and styles
 au FileType python set omnifunc=pythoncomplete#Complete
@@ -24,9 +27,11 @@ let g:SuperTabDefaultCompletionType = "context"
 
 au! BufRead,BufNewFile *.jade setfiletype jade 
 au! BufRead,BufNewFile *.styl setfiletype styl 
+au! BufRead,BufNewFile *.less setfiletype less
 au! BufRead,BufNewFile *.coffee setfiletype coffee 
 au! BufRead,BufNewFile *.yaml setfiletype yaml
 au! BufRead,BufNewFile *.less setfiletype less
+au! BufRead,BufNewFile *.soy setfiletype html
 
 autocmd Filetype c setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
@@ -34,8 +39,14 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 autocmd Filetype less setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 syntax=coffee
+autocmd Filetype less setlocal ts=2 sts=2 sw=2 syntax=less
 autocmd Filetype styl setlocal ts=2 sts=2 sw=2 syntax=stylus
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2 syntax=jade
+autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
+
+let g:closetag_html_style=1 
 
 autocmd BufRead,BufNewFile *.soy set syntax=html 
 
@@ -49,7 +60,21 @@ map <unique> <Leader>l <Plug>TaskList
 nnoremap <silent> <Leader>t :CommandT<CR>
 nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 
-let g:pep8_map='<leader>8'
+nnoremap <silent> <Leader>t :CommandT<CR>
+nnoremap <silent> <Leader>b :CommandTBuffer<CR>
+let g:pep8_map='\8'
+
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+nmap \q :nohlsearch<CR>
+nmap \p :reg<CR>
+nmap \s :SyntasticCheck<CR>
+" ???
+nmap \l <Plug>TaskList
+nmap ; :CtrlPBuffer<CR>
+nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 cnoremap sudow w !sudo tee % >/dev/null
 
