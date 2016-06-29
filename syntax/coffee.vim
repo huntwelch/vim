@@ -27,7 +27,7 @@ hi def link coffeeStatement Statement
 syn match coffeeRepeat /\<\%(for\|while\|until\|loop\)\>/ display
 hi def link coffeeRepeat Repeat
 
-syn match coffeeConditional /\<\%(if\|else\|unless\|switch\|when\|then\)\>/
+syn match coffeeConditional /\<\%(if\|else\|unless\|switch\|when\|then\|is\|isnt\|and\|or\)\>/
 \                           display
 hi def link coffeeConditional Conditional
 
