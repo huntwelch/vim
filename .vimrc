@@ -47,6 +47,7 @@ autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buff
 au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
 let g:closetag_html_style=1 
+let g:syntastic_auto_jump = 0
 
 autocmd BufRead,BufNewFile *.soy set syntax=html 
 
@@ -65,12 +66,13 @@ nnoremap <silent> <Leader>b :CommandTBuffer<CR>
 let g:pep8_map='\8'
 
 set incsearch
-set ignorecase
 set smartcase
 set hlsearch
 nmap \q :nohlsearch<CR>
+nmap \c iconsole.log();
+nmap \[ "0p<CR>
 nmap \p :reg<CR>
-nmap \s :SyntasticCheck<CR>
+"nmap \s :SyntasticCheck<CR>
 " ???
 nmap \l <Plug>TaskList
 nmap ; :CtrlPBuffer<CR>
