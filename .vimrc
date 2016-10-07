@@ -42,7 +42,7 @@ autocmd Filetype coffee setlocal ts=2 sts=2 sw=2 syntax=coffee
 autocmd Filetype less setlocal ts=2 sts=2 sw=2 syntax=less
 autocmd Filetype styl setlocal ts=2 sts=2 sw=2 syntax=stylus
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2 syntax=jade
-autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
+" autocmd FileType c,cpp,java,php,python,ruby,eruby,yaml autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
@@ -72,11 +72,13 @@ nmap \q :nohlsearch<CR>
 nmap \c iconsole.log();
 nmap \[ "0p<CR>
 nmap \p :reg<CR>
-"nmap \s :SyntasticCheck<CR>
+" nmap \s :SyntasticCheck<CR>
 " ???
 nmap \l <Plug>TaskList
 nmap ; :CtrlPBuffer<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+nmap \f zfat<CR>
+nmap f za<CR>
 
 cnoremap sudow w !sudo tee % >/dev/null
 
